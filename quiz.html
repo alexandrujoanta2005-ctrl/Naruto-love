@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0c0a09">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Naruto Quiz">
+<title>Quiz Ninja</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./style.css?v=9">
+</head>
+<body>
+
+<main class="app quiz-shell">
+  <header class="topbar">
+    <div class="brand"><small>❓ QUIZ NINJA</small><h1>Provocarea Shinobi</h1></div>
+    <div class="quiz-badge"><span id="bankCount">0</span> întrebări</div>
+  </header>
+
+  <div class="filters">
+    <select id="categoryFilter" class="select"></select>
+    <select id="difficultyFilter" class="select">
+      <option>Toate</option><option>Ușor</option><option>Mediu</option><option>Greu</option>
+    </select>
+  </div>
+
+  <div class="quiz-top">
+    <span class="quiz-badge">Scor: <strong id="quizScore">0 / 0</strong></span>
+    <span class="quiz-badge">+10 XP / corect</span>
+  </div>
+
+  <div
+    style="
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      margin-bottom:10px
+    "
+  >
+    <div class="stat">
+      <strong id="seenCount">0</strong>
+      <span>VĂZUTE</span>
+    </div>
+
+    <div class="stat">
+      <strong id="remainingCount">0</strong>
+      <span>RĂMASE</span>
+    </div>
+
+    <div class="stat">
+      <strong id="uniqueMode">ON</strong>
+      <span>FĂRĂ REPETARE</span>
+    </div>
+  </div>
+
+  <div class="progress"><div id="quizProgress"></div></div>
+
+  <section class="question-card" style="margin-top:12px">
+    <span class="kicker">ALEGE RĂSPUNSUL CORECT</span>
+    <h2 id="questionText">Se încarcă...</h2>
+    <div id="answers" class="answers"></div>
+    <div class="quiz-footer">
+      <div id="quizMessage" class="quiz-message"></div>
+      <button id="nextQuestion" class="primary-btn" type="button">Următoarea →</button>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:12px">
+    <h3>Istoric întrebări ✅</h3>
+
+    <p class="muted">
+      Aplicația memorează întrebările deja afișate pe acest dispozitiv.
+      Nu le mai arată din nou până când termini banca sau resetezi istoricul.
+    </p>
+
+    <button
+      id="resetQuestionHistory"
+      class="danger-btn"
+      type="button"
+      style="margin-top:8px"
+    >
+      Resetează întrebările văzute
+    </button>
+  </section>
+
+  <p class="notice">
+    Modul v8 evită repetarea aceleiași întrebări exacte. Banca locală are 100000 de variante.
+    Când termini toate întrebările disponibile pentru filtrul ales, aplicația îți spune că ai terminat lotul.
+  </p>
+</main>
+<script src="./questions.js?v=9"></script>
+<script src="./quiz.js?v=9"></script>
+
+
+<nav class="bottom-nav">
+  <button type="button" class="nav-item " data-page="index.html"><span class="nav-icon">🏠</span><span>Sat</span></button>
+  <button type="button" class="nav-item " data-page="missions.html"><span class="nav-icon">⚔️</span><span>Misiuni</span></button>
+  <button type="button" class="nav-item active" data-page="quiz.html"><span class="nav-icon">❓</span><span>Quiz</span></button>
+  <button type="button" class="nav-item " data-page="jutsu.html"><span class="nav-icon">🌀</span><span>Jutsu</span></button>
+  <button type="button" class="nav-item " data-page="profile.html"><span class="nav-icon">👤</span><span>Ninja</span></button>
+</nav>
+
+<script src="./app.js?v=9"></script>
+</body>
+</html>

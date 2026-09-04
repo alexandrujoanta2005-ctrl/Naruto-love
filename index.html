@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0a0908">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Naruto Quiz">
+<title>Calea Ninja</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./style.css?v=16">
+</head>
+<body class="naruto-home-v3">
+
+<main class="app ninja-dashboard">
+
+  <section class="ninja-profile-top">
+    <div class="profile-left">
+      <div id="profilePortrait" class="profile-portrait">
+        <span id="profilePortraitEmoji">🟠</span>
+      </div>
+
+      <div class="profile-copy">
+        <strong id="homeName">Uzumaki Naruto</strong>
+        <span id="homeSubtitle">🍃 Sat: Konoha</span>
+        <div class="profile-rank-row">
+          <span id="homeRank" class="rank-badge">Genin</span>
+          <span id="homeStreakMini" class="streak-badge">🔥 1 zi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-level">
+      <div class="level-ring">
+        <span>Nivel</span>
+        <strong id="homeLevel">1</strong>
+      </div>
+
+      <div class="level-xp">
+        <div class="level-xp-line">
+          <strong>XP</strong>
+          <span><b id="homeXP">0</b> / <span id="homeXPGoal">500</span></span>
+        </div>
+        <div class="progress">
+          <div id="homeXPProgress"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-box">
+      <div><span>🪙</span><strong id="homeCoins">150</strong></div>
+      <div><span>🟣</span><strong id="homeChakra">100</strong></div>
+      <button class="resource-plus" type="button" id="resourcePlus">+</button>
+    </div>
+  </section>
+
+  <section class="village-scene">
+    <div class="scene-sky"></div>
+    <div class="scene-mountain">
+      <div class="mountain-head m1"></div>
+      <div class="mountain-head m2"></div>
+      <div class="mountain-head m3"></div>
+      <div class="mountain-head m4"></div>
+    </div>
+    <div class="scene-village">
+      <span class="house h1"></span>
+      <span class="house h2"></span>
+      <span class="house h3"></span>
+      <span class="house h4"></span>
+      <span class="house h5"></span>
+      <span class="tower"></span>
+    </div>
+
+    <div class="left-status-panel">
+      <div class="status-box">
+        <span class="status-label">STREAK</span>
+        <strong class="big-fire">🔥</strong>
+        <strong id="homeStreakBig">1</strong>
+        <span>zile</span>
+      </div>
+
+      <div class="status-box rank-box">
+        <span class="status-label">RANG ACTUAL</span>
+        <strong class="rank-icon">✦</strong>
+        <strong id="homeRankBig">Genin</strong>
+        <span id="homeRankXP">0 XP</span>
+      </div>
+    </div>
+
+    <div id="heroCharacter" class="hero-character realistic-mode">
+      <div class="hero-aura"></div>
+      <div class="hero-shadow"></div>
+
+      <img
+        id="heroCharacterImage"
+        class="hero-character-image"
+        src="./assets/characters/naruto.png"
+        alt="Personaj ninja"
+      >
+
+      <video
+        id="heroHomeVideo"
+        class="hero-home-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="./assets/characters/naruto.png"
+        webkit-playsinline
+        disablepictureinpicture
+        controlslist="nodownload noplaybackrate"
+        aria-label="Video Home"
+      >
+      </video>
+    </div>
+
+    <div class="right-action-panel">
+      <div id="characterSpeech" class="character-speech show">
+        Niciodată nu te da înapoi! Adevăratul ninja nu renunță!
+      </div>
+
+      <button id="talkCharacter" class="scene-action orange" type="button">
+        💬 VORBEȘTE
+      </button>
+
+      <button id="voiceCharacter" class="scene-action blue" type="button">
+        🔊 SPUNE CU VOCE
+      </button>
+
+      <button id="animateCharacter" class="scene-action purple" type="button">
+        ⚡ ANIMAȚIE
+      </button>
+    </div>
+  </section>
+
+  <section class="character-select-panel">
+    <div class="panel-title-row">
+      <strong>ALEGE PERSONAJUL</strong>
+      <span>se salvează automat</span>
+    </div>
+
+    <div id="characterCarousel" class="character-carousel">
+      <button class="character-tile selected" type="button" data-character="naruto">
+        <div class="mini-avatar naruto">
+          <img src="./assets/characters/naruto.png" alt="naruto">
+        </div>
+        <strong>Naruto</strong>
+      </button>
+
+      <button class="character-tile" type="button" data-character="sasuke">
+        <div class="mini-avatar sasuke">
+          <img src="./assets/characters/sasuke.png" alt="sasuke">
+        </div>
+        <strong>Sasuke</strong>
+      </button>
+
+      <button class="character-tile" type="button" data-character="sakura">
+        <div class="mini-avatar sakura">
+          <img src="./assets/characters/sakura.png" alt="sakura">
+        </div>
+        <strong>Sakura</strong>
+      </button>
+
+      <button class="character-tile" type="button" data-character="kakashi">
+        <div class="mini-avatar kakashi">
+          <img src="./assets/characters/kakashi.png" alt="kakashi">
+        </div>
+        <strong>Kakashi</strong>
+      </button>
+
+      <button class="character-tile" type="button" data-character="itachi">
+        <div class="mini-avatar itachi">
+          <img src="./assets/characters/itachi.png" alt="itachi">
+        </div>
+        <strong>Itachi</strong>
+      </button>
+
+      <button class="character-tile" type="button" data-character="gaara">
+        <div class="mini-avatar gaara">
+          <img src="./assets/characters/gaara.png" alt="gaara">
+        </div>
+        <strong>Gaara</strong>
+      </button>
+    </div>
+  </section>
+
+  <section class="home-feature-grid">
+    <a class="feature-tile missions" href="./missions.html">
+      <div class="feature-art">📜</div>
+      <strong>MISIUNI</strong>
+      <span>Îndeplinește misiuni și câștigă recompense!</span>
+    </a>
+
+    <a class="feature-tile quiz" href="./quiz.html">
+      <div class="feature-art">❓</div>
+      <strong>QUIZ</strong>
+      <span>Peste 100000 de variante te așteaptă!</span>
+    </a>
+
+    <a class="feature-tile jutsu" href="./jutsu.html">
+      <div class="feature-art">🌀</div>
+      <strong>JUTSU</strong>
+      <span>Învață tehnici și devino mai puternic!</span>
+    </a>
+
+    <a class="feature-tile inventory" href="./inventory.html">
+      <div class="feature-art">🎒</div>
+      <strong>INVENTAR</strong>
+      <span>Obține și echipează obiecte ninja!</span>
+    </a>
+  </section>
+
+  <section class="daily-challenge">
+    <div class="challenge-icon">📜</div>
+
+    <div class="challenge-copy">
+      <span>PROVOCAREA ZILEI</span>
+      <strong>Răspunde corect la 10 întrebări din categoria JUTSU</strong>
+      <div class="challenge-progress-row">
+        <b id="dailyChallengeProgress">0 / 10</b>
+        <div class="progress"><div id="dailyChallengeBar"></div></div>
+      </div>
+    </div>
+
+    <div class="challenge-reward">
+      <span>RECOMPENSĂ</span>
+      <strong>✦ 300 &nbsp; 🪙 500</strong>
+    </div>
+
+    <a class="primary-btn challenge-start" href="./quiz.html">ÎNCEPE</a>
+  </section>
+
+  <p class="notice">
+    Fan-made Naruto PWA. Interfața și ilustrațiile din aplicație sunt originale, desenate din CSS, fără imagini oficiale.
+  </p>
+</main>
+
+<nav class="bottom-nav">
+  <button type="button" class="nav-item active" data-page="index.html"><span class="nav-icon">🍥</span><span>Acasă</span></button>
+  <button type="button" class="nav-item" data-page="missions.html"><span class="nav-icon">⚔️</span><span>Misiuni</span></button>
+  <button type="button" class="nav-item" data-page="quiz.html"><span class="nav-icon">❓</span><span>Quiz</span></button>
+  <button type="button" class="nav-item" data-page="jutsu.html"><span class="nav-icon">✦</span><span>Jutsu</span></button>
+  <button type="button" class="nav-item" data-page="profile.html"><span class="nav-icon">👤</span><span>Profil</span></button>
+</nav>
+
+<script src="./app.js?v=15"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+
+  const characters={
+    naruto:{
+      image:"./assets/characters/naruto.png",
+      video:"./assets/videos/naruto.mp4",
+      fullName:"Uzumaki Naruto",
+      village:"Konoha",
+      rank:"Genin",
+      portrait:"🟠",
+      main:"#ef7b23",
+      dark:"#a7431c",
+      hair:"#f0c33f",
+      skin:"#e4ad81",
+      band:"#27323a",
+      aura:"rgba(239,123,35,.34)",
+      emblem:"🌀",
+      speech:[
+        "Niciodată nu te da înapoi! Adevăratul ninja nu renunță!",
+        "Hai să ne antrenăm până ajungem la următorul rang! 🔥",
+        "Quiz-ul de azi? Îl terminăm fără să renunțăm! ❓",
+        "Un ninja adevărat își ține promisiunile. 🍥"
+      ]
+    },
+    sasuke:{
+      image:"./assets/characters/sasuke.png",
+      video:"./assets/videos/sasuke.mp4",
+      fullName:"Uchiha Sasuke",
+      village:"Konoha",
+      rank:"Genin",
+      portrait:"🔵",
+      main:"#263d67",
+      dark:"#121a2d",
+      hair:"#111217",
+      skin:"#dfaa82",
+      band:"#313843",
+      aura:"rgba(78,120,219,.32)",
+      emblem:"⚡",
+      speech:[
+        "Concentrează-te. Fiecare mișcare contează.",
+        "Puterea vine din disciplină, nu din grabă.",
+        "Alege răspunsul după ce ai analizat toate variantele.",
+        "Antrenamentul începe atunci când ceilalți se opresc."
+      ]
+    },
+    sakura:{
+      image:"./assets/characters/sakura.png",
+      video:"./assets/videos/sakura.mp4",
+      fullName:"Haruno Sakura",
+      village:"Konoha",
+      rank:"Chunin",
+      portrait:"🌸",
+      main:"#c94f7d",
+      dark:"#793047",
+      hair:"#f083a6",
+      skin:"#efb28d",
+      band:"#732f46",
+      aura:"rgba(235,105,153,.30)",
+      emblem:"🌸",
+      speech:[
+        "Forța și controlul merg împreună. 🌸",
+        "Nu subestima niciodată cât de mult poți progresa.",
+        "Un ninja bun învață și din greșeli.",
+        "Hai să câștigăm XP și să urcăm în rang!"
+      ]
+    },
+    kakashi:{
+      image:"./assets/characters/kakashi.png",
+      video:"./assets/videos/kakashi.mp4",
+      fullName:"Hatake Kakashi",
+      village:"Konoha",
+      rank:"Jonin",
+      portrait:"⚪",
+      main:"#48586a",
+      dark:"#27303a",
+      hair:"#d6d8dc",
+      skin:"#cfa27f",
+      band:"#273a50",
+      aura:"rgba(180,200,220,.26)",
+      emblem:"📘",
+      speech:[
+        "Cei care își abandonează camarazii sunt mai răi decât gunoiul.",
+        "Graba te face să ratezi detalii importante.",
+        "Citește întrebarea de două ori înainte să răspunzi.",
+        "Experiența vine din misiuni, nu doar din teorie."
+      ]
+    },
+    itachi:{
+      image:"./assets/characters/itachi.png",
+      video:"./assets/videos/itachi.mp4",
+      fullName:"Uchiha Itachi",
+      village:"Konoha",
+      rank:"ANBU",
+      portrait:"🔴",
+      main:"#2b2328",
+      dark:"#151216",
+      hair:"#171217",
+      skin:"#d5a17e",
+      band:"#34242c",
+      aura:"rgba(196,55,63,.30)",
+      emblem:"🔴",
+      speech:[
+        "Adevărata putere începe cu înțelegerea.",
+        "Nu tot ceea ce vezi spune întreaga poveste.",
+        "Răbdarea este uneori cea mai puternică tehnică.",
+        "Învață înainte să judeci."
+      ]
+    },
+    gaara:{
+      image:"./assets/characters/gaara.png",
+      video:"./assets/videos/gaara.mp4",
+      fullName:"Gaara",
+      village:"Sunagakure",
+      rank:"Kazekage",
+      portrait:"🟤",
+      main:"#6f4231",
+      dark:"#40281f",
+      hair:"#a64935",
+      skin:"#e0a37f",
+      band:"#49302b",
+      aura:"rgba(190,110,61,.29)",
+      emblem:"砂",
+      speech:[
+        "Protejează ceea ce îți este important.",
+        "Singurătatea poate fi transformată în putere.",
+        "Un lider bun își înțelege oamenii.",
+        "Rămâi calm. Nisipul se mișcă înaintea ta."
+      ]
+    }
+  };
+
+  const profile=NinjaApp.getProfile();
+  const xp=Number(profile.xp||0);
+  const rank=NinjaApp.rankFromXP(xp);
+
+  const level=Math.max(1,Math.floor(xp/500)+1);
+  const levelStart=(level-1)*500;
+  const levelGoal=level*500;
+  const levelProgress=Math.max(0,Math.min(100,((xp-levelStart)/(levelGoal-levelStart))*100));
+
+  document.getElementById("homeXP").textContent=xp;
+  document.getElementById("homeXPGoal").textContent=levelGoal;
+  document.getElementById("homeXPProgress").style.width=levelProgress+"%";
+  document.getElementById("homeLevel").textContent=level;
+  document.getElementById("homeCoins").textContent=profile.coins||150;
+  document.getElementById("homeChakra").textContent=Math.max(100,Math.floor(xp/10)+100);
+  document.getElementById("homeStreakMini").textContent="🔥 "+(profile.streak||1)+" "+((profile.streak||1)===1?"zi":"zile");
+  document.getElementById("homeStreakBig").textContent=profile.streak||1;
+  document.getElementById("homeRankBig").textContent=rank;
+  document.getElementById("homeRankXP").textContent=xp+" XP";
+
+  const correct=Number(profile.quizCorrect||0);
+  const challenge=Math.min(10,correct%11);
+  document.getElementById("dailyChallengeProgress").textContent=challenge+" / 10";
+  document.getElementById("dailyChallengeBar").style.width=(challenge*10)+"%";
+
+  const hero=document.getElementById("heroCharacter");
+  const heroImage=document.getElementById("heroCharacterImage");
+  const heroVideo=document.getElementById("heroHomeVideo");
+
+  // HOME VIDEO v13: fiecare personaj are propriul fisier video.
+  // Daca fisierul lipseste, aplicatia afiseaza automat imaginea personajului.
+  let videoUnlockBound=false;
+
+  function bindVideoUnlock(){
+    if(videoUnlockBound) return;
+    videoUnlockBound=true;
+    const unlock=()=>{
+      if(heroVideo && hero.classList.contains("home-video-mode")){
+        heroVideo.muted=true;
+        heroVideo.defaultMuted=true;
+        heroVideo.play().catch(()=>{});
+      }
+      document.removeEventListener("touchstart",unlock,true);
+      document.removeEventListener("pointerdown",unlock,true);
+      videoUnlockBound=false;
+    };
+    document.addEventListener("touchstart",unlock,true);
+    document.addEventListener("pointerdown",unlock,true);
+  }
+
+  function loadCharacterVideo(c,key,fromUser=false){
+    if(!heroVideo) return;
+
+    // v17: schimbăm sursa într-un singur pas. În v16 exista un load() fără src
+    // care putea emite un error întârziat și ascundea video-ul nou, lăsând doar poza.
+    heroVideo.onerror=null;
+    heroVideo.onloadeddata=null;
+    heroVideo.oncanplay=null;
+    heroVideo.onplaying=null;
+    heroVideo.pause();
+
+    heroVideo.muted=true;
+    heroVideo.defaultMuted=true;
+    heroVideo.volume=0;
+    heroVideo.removeAttribute("poster");
+    heroVideo.dataset.character=key;
+    heroVideo.src=c.video+"?v=17";
+    hero.classList.add("home-video-mode");
+
+    const expectedKey=key;
+    const expectedSrc=c.video;
+    let playRequested=false;
+
+    const isCurrent=()=>heroVideo.dataset.character===expectedKey;
+
+    const startNow=()=>{
+      if(!isCurrent()) return;
+      hero.classList.add("home-video-mode");
+      try{ heroVideo.currentTime=0; }catch(e){}
+      playRequested=true;
+      const result=heroVideo.play();
+      if(result && typeof result.catch==="function"){
+        result.catch(()=>bindVideoUnlock());
+      }
+    };
+
+    const ready=()=>{
+      if(!isCurrent()) return;
+      hero.classList.add("home-video-mode");
+      if(!playRequested || heroVideo.paused) startNow();
+    };
+
+    const fail=()=>{
+      if(!isCurrent()) return;
+      // Fallback la imagine doar dacă sursa curentă chiar a eșuat.
+      const current=(heroVideo.currentSrc||heroVideo.src||"");
+      if(current && current.includes(expectedSrc.replace("./",""))){
+        hero.classList.remove("home-video-mode");
+      }
+    };
+
+    heroVideo.onerror=fail;
+    heroVideo.onloadeddata=ready;
+    heroVideo.oncanplay=ready;
+    heroVideo.onplaying=()=>{
+      if(isCurrent()) hero.classList.add("home-video-mode");
+    };
+
+    heroVideo.load();
+
+    // La click/touch cerem play chiar în gestul utilizatorului.
+    if(fromUser) startNow();
+    else if(heroVideo.readyState>=2) ready();
+  }
+
+  const speech=document.getElementById("characterSpeech");
+  const portrait=document.getElementById("profilePortrait");
+  const portraitEmoji=document.getElementById("profilePortraitEmoji");
+  let active=localStorage.getItem("narutoSelectedCharacter")||"naruto";
+  if(!characters[active]) active="naruto";
+  let lastSpeech="";
+
+  function applyCharacter(key,announce=true,fromUser=false){
+    if(!characters[key]) return;
+    active=key;
+    localStorage.setItem("narutoSelectedCharacter",key);
+    const c=characters[key];
+
+    hero.style.setProperty("--hero-main",c.main);
+    hero.style.setProperty("--hero-dark",c.dark);
+    hero.style.setProperty("--hero-hair",c.hair);
+    hero.style.setProperty("--hero-skin",c.skin);
+    hero.style.setProperty("--hero-band",c.band);
+    hero.style.setProperty("--hero-aura",c.aura);
+    heroImage.src=c.image;
+    heroImage.alt=c.fullName;
+    loadCharacterVideo(c,key,fromUser);
+
+    const oldEmblem=document.getElementById("heroEmblem");
+    if(oldEmblem) oldEmblem.textContent=c.emblem;
+    document.getElementById("homeName").textContent=c.fullName;
+    document.getElementById("homeSubtitle").textContent="🍃 Sat: "+c.village;
+    document.getElementById("homeRank").textContent=c.rank;
+    portraitEmoji.textContent=c.portrait;
+
+    document.querySelectorAll(".character-tile").forEach(tile=>{
+      tile.classList.toggle("selected",tile.dataset.character===key);
+    });
+
+    if(announce){
+      speech.textContent="Ai ales "+c.fullName+".";
+      speech.classList.add("show");
+      setTimeout(()=>speech.classList.remove("show"),2200);
+    }
+  }
+
+  function randomSpeech(){
+    const c=characters[active];
+    let choices=c.speech.filter(s=>s!==lastSpeech);
+    if(!choices.length) choices=c.speech.slice();
+    const text=choices[Math.floor(Math.random()*choices.length)];
+    lastSpeech=text;
+    return text;
+  }
+
+  function showSpeech(useVoice){
+    const text=randomSpeech();
+    speech.textContent=text;
+    speech.classList.add("show");
+    hero.classList.add("talking");
+
+    setTimeout(()=>{
+      speech.classList.remove("show");
+      hero.classList.remove("talking");
+    },5000);
+
+    if(useVoice && "speechSynthesis" in window){
+      speechSynthesis.cancel();
+      const utterance=new SpeechSynthesisUtterance(text);
+      utterance.lang="ro-RO";
+      utterance.rate=.94;
+      utterance.pitch=1;
+      utterance.onend=()=>hero.classList.remove("talking");
+      speechSynthesis.speak(utterance);
+    }
+  }
+
+  document.querySelectorAll(".character-tile").forEach(tile=>{
+    tile.addEventListener("click",()=>applyCharacter(tile.dataset.character,true,true));
+  });
+
+  document.getElementById("talkCharacter").addEventListener("click",()=>showSpeech(false));
+  document.getElementById("voiceCharacter").addEventListener("click",()=>showSpeech(true));
+
+  document.getElementById("animateCharacter").addEventListener("click",()=>{
+    hero.classList.remove("attack");
+    void hero.offsetWidth;
+    hero.classList.add("attack");
+    speech.textContent="Jutsu de antrenament! ⚡";
+    speech.classList.add("show");
+    setTimeout(()=>{
+      hero.classList.remove("attack");
+      speech.classList.remove("show");
+    },1700);
+  });
+
+  document.getElementById("resourcePlus").addEventListener("click",()=>{
+    alert("Magazinul de Ryo și chakra îl putem adăuga în următoarea versiune.");
+  });
+
+  applyCharacter(active,false);
+  setTimeout(()=>showSpeech(false),900);
+});
+</script>
+
+</body>
+</html>

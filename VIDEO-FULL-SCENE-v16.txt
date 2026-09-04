@@ -1,0 +1,6 @@
+NARUTO v16
+- Video-ul personajului selectat ocupa toata zona mare "village-scene" de pe Home.
+- Panourile STREAK/RANG si butoanele de actiune raman peste video.
+- La apasarea unui personaj jos, video-ul lui porneste de la inceput.
+- Gaara ramane pe imagine pana exista assets/videos/gaara.mp4.
+- Cache PWA actualizat la v16.

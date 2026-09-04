@@ -1,0 +1,16 @@
+NARUTO v14 - VIDEO PERSONAJE + ANDROID PWA
+
+Video-uri incluse:
+- Naruto: assets/videos/naruto.mp4
+- Sasuke: assets/videos/sasuke.mp4
+- Sakura: assets/videos/sakura.mp4
+- Kakashi: assets/videos/kakashi.mp4
+- Itachi: assets/videos/itachi.mp4
+- Gaara: assets/videos/gaara.mp4 (inca lipseste; se foloseste poza)
+
+Compatibilitate:
+- Android Chrome / PWA instalata: autoplay muted + loop + playsinline.
+- iPhone PWA: autoplay muted + playsinline.
+- Service worker nu intercepteaza fisierele video, pentru a pastra suportul corect pentru HTTP Range requests.
+
+Dupa upload pe GitHub, inchide complet aplicatia instalata si redeschide-o pentru versiunea v14.

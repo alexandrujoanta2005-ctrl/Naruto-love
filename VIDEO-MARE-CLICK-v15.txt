@@ -1,0 +1,7 @@
+NARUTO v15 - VIDEO MARE + PLAY LA SELECTAREA PERSONAJULUI
+
+- Video-ul din Home este mult mai mare pe desktop, Android si iPhone.
+- La apasarea pe Naruto / Sasuke / Sakura / Kakashi / Itachi, clipul lui este incarcat si pornit imediat de la inceput.
+- Gaara ramane pe poza pana cand exista assets/videos/gaara.mp4.
+- Videoclipurile ruleaza muted + loop pentru autoplay compatibil PWA.
+- Cache PWA actualizat la v15.

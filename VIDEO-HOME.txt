@@ -1,0 +1,11 @@
+NARUTO v11 - HOME VIDEO
+
+Video inclus direct in proiect:
+assets/home-video.mp4
+
+Pe Home, video-ul inlocuieste automat imaginea personajului.
+Configurare: autoplay, loop, muted, playsinline pentru iPhone/PWA.
+Daca video-ul nu poate fi incarcat, imaginea personajului ramane fallback.
+
+Fisier video: THIS IS 4K ANIME (Naruto).mp4
+Integrat ca assets/home-video.mp4

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0c0a09">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Naruto Quiz">
+<title>Misiuni Ninja</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./style.css?v=9">
+</head>
+<body>
+
+<main class="app">
+  <header class="topbar"><div class="brand"><small>⚔️ MISIUNI</small><h1>Panoul de misiuni</h1></div></header>
+  <section class="card"><h3>Misiuni zilnice</h3><div id="missionList"></div></section>
+  <section class="card"><h3>Progres</h3><p class="muted" id="missionStats"></p></section>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const missions=[
+    {icon:"❓",title:"Răspunde la 10 întrebări",reward:50},
+    {icon:"🔥",title:"Intră în aplicație azi",reward:20},
+    {icon:"🌀",title:"Studiază arhiva Jutsu",reward:30},
+    {icon:"🥷",title:"Actualizează profilul ninja",reward:20},
+    {icon:"⚔️",title:"Completează o misiune",reward:25}
+  ];
+  const box=document.getElementById("missionList");
+  let done={};try{done=JSON.parse(localStorage.getItem("ninjaDailyMissions")||"{}")}catch(e){}
+  function update(){
+    const p=NinjaApp.getProfile();
+    document.getElementById("missionStats").textContent="Misiuni revendicate: "+Object.keys(done).filter(k=>done[k]).length+" / "+missions.length+" • XP: "+p.xp+" • Rang: "+p.rank;
+  }
+  missions.forEach((m,i)=>{
+    const row=document.createElement("div");row.className="mission";
+    row.innerHTML='<div class="mission-icon">'+m.icon+'</div><div class="mission-copy"><strong>'+m.title+'</strong><span>Recompensă: +'+m.reward+' XP</span></div><button class="'+(done[i]?'ghost-btn':'primary-btn')+'" type="button">'+(done[i]?'Gata ✓':'Revendică')+'</button>';
+    const b=row.querySelector("button");b.disabled=!!done[i];
+    b.addEventListener("click",()=>{
+      if(done[i])return;
+      done[i]=true;localStorage.setItem("ninjaDailyMissions",JSON.stringify(done));
+      const p=NinjaApp.getProfile();p.xp+=m.reward;p.rank=NinjaApp.rankFromXP(p.xp);p.missionsDone=(p.missionsDone||0)+1;NinjaApp.saveProfile(p);
+      b.textContent="Gata ✓";b.className="ghost-btn";b.disabled=true;update();
+    });
+    box.appendChild(row);
+  });
+  update();
+});
+</script>
+
+
+<nav class="bottom-nav">
+  <button type="button" class="nav-item " data-page="index.html"><span class="nav-icon">🏠</span><span>Sat</span></button>
+  <button type="button" class="nav-item active" data-page="missions.html"><span class="nav-icon">⚔️</span><span>Misiuni</span></button>
+  <button type="button" class="nav-item " data-page="quiz.html"><span class="nav-icon">❓</span><span>Quiz</span></button>
+  <button type="button" class="nav-item " data-page="jutsu.html"><span class="nav-icon">🌀</span><span>Jutsu</span></button>
+  <button type="button" class="nav-item " data-page="profile.html"><span class="nav-icon">👤</span><span>Ninja</span></button>
+</nav>
+
+<script src="./app.js?v=9"></script>
+</body>
+</html>

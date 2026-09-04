@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0c0a09">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Naruto Quiz">
+<title>Jutsu</title>
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./style.css?v=9">
+</head>
+<body>
+
+<main class="app">
+  <header class="topbar"><div class="brand"><small>🌀 JUTSU</small><h1>Arhiva tehnicilor</h1></div></header>
+  <section class="card">
+    <h3>Tehnici de studiat</h3>
+    <p class="muted">Folosește arhiva ca ghid pentru progresul aplicației.</p>
+    <div class="jutsu-grid" id="jutsuGrid"></div>
+  </section>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const list=[
+    ["Shadow Clone","Tehnică de multiplicare folosită frecvent de Naruto.","Student"],
+    ["Rasengan","Sferă de chakra creată de Minato.","Genin"],
+    ["Chidori","Tehnică de fulger creată de Kakashi.","Genin"],
+    ["Gentle Fist","Stil de luptă asociat clanului Hyuga.","Genin"],
+    ["Shadow Possession","Tehnică specifică clanului Nara.","Genin"],
+    ["Mind Transfer","Tehnică specifică clanului Yamanaka.","Genin"],
+    ["Expansion Jutsu","Tehnică specifică clanului Akimichi.","Genin"],
+    ["Sage Mode","Stare avansată bazată pe energie naturală.","Chunin"],
+    ["Flying Thunder God","Tehnică spațiu-timp asociată cu Minato.","Jonin"],
+    ["Eight Gates","Eliberarea limitatoarelor corpului.","Jonin"],
+    ["Kamui","Tehnică spațiu-timp Mangekyo.","Jonin"],
+    ["Wood Release","Kekkei genkai asociată cu Hashirama.","Kage"]
+  ];
+  const grid=document.getElementById("jutsuGrid");
+  list.forEach(x=>{
+    const d=document.createElement("div");d.className="jutsu";
+    d.innerHTML="<strong>"+x[0]+"</strong><span>"+x[1]+"</span><span class='rank-chip'>"+x[2]+"</span>";
+    grid.appendChild(d);
+  });
+});
+</script>
+
+
+<nav class="bottom-nav">
+  <button type="button" class="nav-item " data-page="index.html"><span class="nav-icon">🏠</span><span>Sat</span></button>
+  <button type="button" class="nav-item " data-page="missions.html"><span class="nav-icon">⚔️</span><span>Misiuni</span></button>
+  <button type="button" class="nav-item " data-page="quiz.html"><span class="nav-icon">❓</span><span>Quiz</span></button>
+  <button type="button" class="nav-item active" data-page="jutsu.html"><span class="nav-icon">🌀</span><span>Jutsu</span></button>
+  <button type="button" class="nav-item " data-page="profile.html"><span class="nav-icon">👤</span><span>Ninja</span></button>
+</nav>
+
+<script src="./app.js?v=9"></script>
+</body>
+</html>

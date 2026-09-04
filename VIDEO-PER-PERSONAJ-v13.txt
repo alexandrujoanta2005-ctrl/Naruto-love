@@ -1,0 +1,24 @@
+NARUTO v13 - VIDEO SEPARAT PENTRU FIECARE PERSONAJ
+
+Aplicatia cauta automat aceste fisiere:
+
+assets/videos/naruto.mp4
+assets/videos/sasuke.mp4
+assets/videos/sakura.mp4
+assets/videos/kakashi.mp4
+assets/videos/itachi.mp4
+assets/videos/gaara.mp4
+
+Naruto.mp4 este deja inclus.
+Pentru celelalte personaje, pune videoclipul MP4 cu EXACT numele de mai sus.
+Nu trebuie modificat index.html.
+
+Cand alegi un personaj:
+- daca video-ul lui exista, porneste automat, muted, loop, playsinline;
+- daca video-ul lipseste sau da eroare, apare automat imaginea personajului.
+
+Recomandare video pentru iPhone/PWA:
+- MP4
+- H.264
+- 720p sau 1080p
+- preferabil fara pista audio daca vrei autoplay sigur
